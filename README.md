@@ -90,4 +90,14 @@ Generates a crypto-strength random byte stream.
 
 Example: `269f58bd8796a774e86c7f61c824d4391bbc356bcb190ef3` // 24 bytes, 48 characters
 
-###### darryl.west@raincitysoftware.com | Version 1.0.1
+## License
+
+Apache 2.0
+
+## To Do
+
+* add command line flags to generate the requested type
+* capability to evaluate name and generate based on argv[0] (hard link)
+* implement mongodb ObjectId from mongo spec
+
+###### darryl.west@raincitysoftware.com | Version 1.0.2

@@ -13,7 +13,8 @@ import (
 )
 
 func main() {
-	fmt.Println("this is really unique, no?")
+    fmt.Println("unique, Version:", unique.Version())
+	fmt.Println("---------------------------------------------")
 
 	fmt.Println(unique.CreateULID())
 	fmt.Println(unique.CreateUUID())

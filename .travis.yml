@@ -8,8 +8,8 @@ install:
 
 branches:
   only:
-    - develop
     - master
+    - staging
 
 script:
   - make qtest
