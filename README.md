@@ -12,6 +12,9 @@ _|"""""|_|"""""| {======|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|
 
 _A unique id generator to create uuid, ulid and other unique numbers..._
 
+[![build](https://travis-ci.org/darrylwest/go-unique.svg?branch=master)](https://travis-ci.org/darrylwest/go-unique/)
+[![reportcard](https://goreportcard.com/badge/github.com/darrylwest/go-unique)](https://goreportcard.com/report/github.com/darrylwest/go-unique)
+
 ## Overview
 
 This is a handy collection of unique id generators including:
