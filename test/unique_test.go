@@ -35,19 +35,35 @@ func TestConfig(t *testing.T) {
 		})
 
 		g.It("should create a 36 character UUID", func() {
-            uuid := unique.CreateUUID()
+			uuid := unique.CreateUUID()
 
-            fmt.Println(uuid)
+			fmt.Println(uuid)
 
-            g.Assert(len(uuid)).Equal(36)
-        })
+			g.Assert(len(uuid)).Equal(36)
+		})
 
-        g.It("should create a 12 chanacter TSID", func() {
-            tsid := unique.CreateTSID()
+		g.It("should create a 32 character GUID", func() {
+			guid := unique.CreateGUID()
 
-            fmt.Println(tsid)
+			fmt.Println(guid)
 
-            g.Assert(len(tsid)).Equal(12)
-        })
+			g.Assert(len(guid)).Equal(32)
+		})
+
+		g.It("should create a 12 chanacter TSID", func() {
+			tsid := unique.CreateTSID()
+
+			fmt.Println(tsid)
+
+			g.Assert(len(tsid)).Equal(12)
+		})
+
+		g.It("should create a 16 chanacter TXID", func() {
+			txid := unique.CreateTXID()
+
+			fmt.Println(txid)
+
+			g.Assert(len(txid)).Equal(16)
+		})
 	})
 }

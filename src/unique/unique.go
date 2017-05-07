@@ -8,12 +8,12 @@
 package unique
 
 import (
-    "fmt"
-    "github.com/hashicorp/go-uuid"
+	"fmt"
+	"github.com/hashicorp/go-uuid"
 	"github.com/oklog/ulid"
 	"io"
 	"math/rand"
-    "strconv"
+	"strconv"
 	"time"
 )
 
@@ -44,18 +44,30 @@ type IDType [26]byte
 
 // CreateUUID generates and returns a uuid as a string
 func CreateUUID() string {
-    id, err := uuid.GenerateUUID()
+	id, _ := uuid.GenerateUUID()
 
-    if err != nil {
-        fmt.Println("error generating uuid: ", err);
-    }
+	return id
+}
 
-    return id
+// CreateGUID generates and returns a uuid as a string
+func CreateGUID() string {
+	buf, _ := uuid.GenerateRandomBytes(16)
+
+	return fmt.Sprintf("%x", buf)
 }
 
 // CreateTSID generates a 12 character time-stamp / base 36 id
 func CreateTSID() string {
-    id := strconv.FormatInt(time.Now().UnixNano(), 36)
+	id := strconv.FormatInt(time.Now().UnixNano(), 36)
 
-    return id
+	return id
+}
+
+// CreateTXID generates a 16 character time-stamp / base 36 id
+func CreateTXID() string {
+	id := strconv.FormatInt(time.Now().UnixNano(), 36)
+	buf, _ := uuid.GenerateRandomBytes(2)
+	str := fmt.Sprintf("%s%x", id, buf)
+
+	return str
 }
