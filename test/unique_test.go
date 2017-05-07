@@ -21,7 +21,7 @@ func TestConfig(t *testing.T) {
 
 	g.Describe("Unique", func() {
 
-		g.It("should create a unique struct", func() {
+		g.It("should create a 26 character ULID", func() {
 			ulid := unique.CreateULID()
 
 			fmt.Println(ulid)
@@ -34,5 +34,20 @@ func TestConfig(t *testing.T) {
 			}
 		})
 
+		g.It("should create a 36 character UUID", func() {
+            uuid := unique.CreateUUID()
+
+            fmt.Println(uuid)
+
+            g.Assert(len(uuid)).Equal(36)
+        })
+
+        g.It("should create a 12 chanacter TSID", func() {
+            tsid := unique.CreateTSID()
+
+            fmt.Println(tsid)
+
+            g.Assert(len(tsid)).Equal(12)
+        })
 	})
 }

@@ -17,4 +17,5 @@ func main() {
 
 	fmt.Println(unique.CreateULID())
 	fmt.Println(unique.CreateUUID())
+    fmt.Println(unique.CreateTSID())
 }

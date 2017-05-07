@@ -13,6 +13,7 @@ import (
 	"github.com/oklog/ulid"
 	"io"
 	"math/rand"
+    "strconv"
 	"time"
 )
 
@@ -41,12 +42,20 @@ func CreateULID() string {
 // IDType 26 bytes
 type IDType [26]byte
 
+// CreateUUID generates and returns a uuid as a string
 func CreateUUID() string {
     id, err := uuid.GenerateUUID()
 
     if err != nil {
         fmt.Println("error generating uuid: ", err);
     }
+
+    return id
+}
+
+// CreateTSID generates a 12 character time-stamp / base 36 id
+func CreateTSID() string {
+    id := strconv.FormatInt(time.Now().UnixNano(), 36)
 
     return id
 }
