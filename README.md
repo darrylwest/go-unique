@@ -17,7 +17,7 @@ _A unique id generator to create uuid, ulid and other unique numbers..._
 This is a handy collection of unique id generators including:
 
 * ulid - a 26 character sortable
-* uuid - from Hashicorp's repo for standard high-quality uuid
+* uuid - from standard high-quality uuid
 * guid - a uuid with dashes stripped
 
 And some ids suitable for sessions, etc:
@@ -35,11 +35,19 @@ And some ids suitable for sessions, etc:
 import "github.com/darrylwest/go-unique"
 
 func main() {
-	uuid := unique.CreateUUID()
-   fmt.Printf("uuid : %s\n", uuid)
+    uuid := unique.CreateUUID()
+    fmt.Printf("uuid : %s\n", uuid)
 
-	ulid := unique.CreateULID()
-   fmt.Printf("ulid : %s\n", uLid)
+    ulid := unique.CreateULID()
+    fmt.Printf("ulid : %s\n", ulid)
+    
+    txid := unique.CreateTXID()
+    fmt.Printf("txid : %s\n", txid)
+    
+    if buf, err := unique.RandomBytes(24); err == nil {
+    	str := fmt.Sprintf("%x", buf)
+    	fmt.Printf("%s (%d)\n", s, len(str));
+    }
 }
 ```
 
@@ -51,7 +59,7 @@ Example: `01BFJA617JMJXEW6G7TDDXNSHX`
 
 ### UUID
 
-Standard V4 uuid from the Hashicorp go-uuid repo (not the deprecated one).
+Standard uuid created with rand/crypto tools.
 
 Example: `63ba8ab3-ae69-92ac-50fc-b408876999bc`
 
@@ -69,8 +77,14 @@ Example: `bcodzisneczc`
 
 ### TXID - Time Stamp with Random Bytes
 
-Bas36 unix nano with 4 additional random bytes.
+Base 36 unix nano with 4 additional random bytes.  Sortable, short, not universal but good for sessions and local ids.
 
-Example: `bcoe5fkmvgox8723`
+Example: `bcoexh3rdic67523`
 
-###### darryl.west@raincitysoftware.com | Version 1.0.0
+### RandomBytes
+
+Generates a crypto-strength random byte stream.
+
+Example: `269f58bd8796a774e86c7f61c824d4391bbc356bcb190ef3` // 24 bytes, 48 characters
+
+###### darryl.west@raincitysoftware.com | Version 1.0.1

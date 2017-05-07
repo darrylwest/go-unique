@@ -12,7 +12,7 @@ import "fmt"
 const (
 	major = 1
 	minor = 0
-	patch = 0
+	patch = 1
 )
 
 // Version - return the version number as a single string

@@ -8,8 +8,8 @@
 package unique
 
 import (
+	crand "crypto/rand"
 	"fmt"
-	"github.com/hashicorp/go-uuid"
 	"github.com/oklog/ulid"
 	"io"
 	"math/rand"
@@ -39,21 +39,29 @@ func CreateULID() string {
 	return CreateRawULID().String()
 }
 
-// IDType 26 bytes
-type IDType [26]byte
+// RandomBytes generates a byte buffer of the specified size and populates it with crypo-strength random bytes
+func RandomBytes(size int) ([]byte, error) {
+	buf := make([]byte, size)
+	_, err := crand.Read(buf)
+
+	return buf, err
+}
+
+func v4uuid() []byte {
+	buf, _ := RandomBytes(16)
+
+	return buf
+}
 
 // CreateUUID generates and returns a uuid as a string
 func CreateUUID() string {
-	id, _ := uuid.GenerateUUID()
-
-	return id
+	buf := v4uuid()
+	return fmt.Sprintf("%08x-%04x-%04x-%04x-%12x", buf[0:4], buf[4:6], buf[6:8], buf[8:10], buf[10:16])
 }
 
 // CreateGUID generates and returns a uuid as a string
 func CreateGUID() string {
-	buf, _ := uuid.GenerateRandomBytes(16)
-
-	return fmt.Sprintf("%x", buf)
+	return fmt.Sprintf("%x", v4uuid())
 }
 
 // CreateTSID generates a 12 character time-stamp / base 36 id
@@ -66,7 +74,7 @@ func CreateTSID() string {
 // CreateTXID generates a 16 character time-stamp / base 36 id
 func CreateTXID() string {
 	id := strconv.FormatInt(time.Now().UnixNano(), 36)
-	buf, _ := uuid.GenerateRandomBytes(2)
+	buf, _ := RandomBytes(2)
 	str := fmt.Sprintf("%s%x", id, buf)
 
 	return str

@@ -20,4 +20,9 @@ func main() {
 	fmt.Println(unique.CreateGUID())
 	fmt.Println(unique.CreateTSID())
 	fmt.Println(unique.CreateTXID())
+
+	if buf, err := unique.RandomBytes(24); err == nil {
+		str := fmt.Sprintf("%x", buf)
+		fmt.Printf("%s (%d)\n", str, len(str))
+	}
 }

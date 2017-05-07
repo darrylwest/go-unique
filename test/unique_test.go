@@ -65,5 +65,14 @@ func TestConfig(t *testing.T) {
 
 			g.Assert(len(txid)).Equal(16)
 		})
+
+		g.It("should generate a random byte stream of a specified size", func() {
+			size := 24
+			buf, err := unique.RandomBytes(size)
+
+			fmt.Printf("%x\n", buf)
+			g.Assert(err).Equal(nil)
+			g.Assert(len(buf)).Equal(size)
+		})
 	})
 }

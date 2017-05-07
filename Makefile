@@ -9,7 +9,6 @@ install-deps:
 	go get -u github.com/golang/lint/golint
 	go get github.com/oklog/ulid
 	go get github.com/franela/goblin
-	go get github.com/hashicorp/go-uuid
 
 format:
 	( gofmt -s -w src/*.go src/unique/*.go test/*.go )
