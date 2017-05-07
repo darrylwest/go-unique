@@ -20,6 +20,9 @@ test:
 	@( go vet src/unique/*.go && go vet src/unique/*.go && go vet src/*.go && cd test/ && go test -cover )
 	@( make lint )
 
+qtest:
+	@( cd test && go test -cover )
+
 run:
 	go run src/main.go
 
