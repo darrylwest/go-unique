@@ -8,6 +8,8 @@
 package unique
 
 import (
+    "fmt"
+    "github.com/hashicorp/go-uuid"
 	"github.com/oklog/ulid"
 	"io"
 	"math/rand"
@@ -38,3 +40,13 @@ func CreateULID() string {
 
 // IDType 26 bytes
 type IDType [26]byte
+
+func CreateUUID() string {
+    id, err := uuid.GenerateUUID()
+
+    if err != nil {
+        fmt.Println("error generating uuid: ", err);
+    }
+
+    return id
+}

@@ -16,4 +16,5 @@ func main() {
 	fmt.Println("this is really unique, no?")
 
 	fmt.Println(unique.CreateULID())
+	fmt.Println(unique.CreateUUID())
 }
