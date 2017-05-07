@@ -80,7 +80,7 @@ Example: `bcodzisneczc`
 
 ### TXID - Time Stamp with Random Bytes
 
-Base 36 unix nano with 4 additional random bytes.  Sortable, short, not universal but good for sessions and local ids.
+Base 36 unix nano with 2 additional random bytes, 4 characters.  Sortable, short, not universal but good for sessions and local ids.
 
 Example: `bcoexh3rdic67523`
 
@@ -99,5 +99,6 @@ Apache 2.0
 * add command line flags to generate the requested type
 * capability to evaluate name and generate based on argv[0] (hard link)
 * implement mongodb ObjectId from mongo spec
+* implement a DOI struct with id, dateCreated, lastUpdated, and version
 
 ###### darryl.west@raincitysoftware.com | Version 1.0.2
