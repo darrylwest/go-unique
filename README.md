@@ -17,7 +17,7 @@ _A unique id generator to create uuid, ulid and other unique numbers..._
 
 ## Overview
 
-This is a handy collection of unique id generators including:
+A module that supports a handy collection of unique id generators including:
 
 * ulid - a 26 character sortable
 * uuid - from standard high-quality uuid
@@ -30,12 +30,16 @@ And some ids suitable for sessions, etc:
 
 ## Installation
 
-`go get github.com/darrylwest/go-unique`
+`go get github.com/darrylwest/go-unique/unique`
+
+or
+
+`git clone https://github.com/darrylwest/go-unique.git`
 
 ## Use
 
 ```go
-import "github.com/darrylwest/go-unique"
+import "github.com/darrylwest/go-unique/unique"
 
 func main() {
     uuid := unique.CreateUUID()
