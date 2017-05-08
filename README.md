@@ -58,6 +58,14 @@ func main() {
 }
 ```
 
+### Command Line
+
+`unique --version` // shows version
+
+`unique [ --ulid --uuid --guid --tsid --txid --byptes ]`
+
+Generates the specified id or byte stream.
+
 ### ULID
 
 Universally Unique Lexicographically Sortable Identifier designed by Alizain Feerasta (similar to mongo's ObjectId).
@@ -105,4 +113,4 @@ Apache 2.0
 * implement mongodb ObjectId from mongo spec
 * implement a DOI struct with id, dateCreated, lastUpdated, and version
 
-###### darryl.west@raincitysoftware.com | Version 1.0.2
+###### darryl.west@raincitysoftware.com | Version 1.0.3
