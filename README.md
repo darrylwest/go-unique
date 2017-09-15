@@ -109,6 +109,7 @@ Apache 2.0
 ## To Do
 
 * capability to evaluate name and generate based on argv[0] (hard link)
+* remove (48) from the end of 'bytes'
 * implement mongodb ObjectId from mongo spec
 * implement a DOI struct with id, dateCreated, lastUpdated, and version
 
