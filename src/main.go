@@ -12,6 +12,7 @@ import (
     "flag"
     "os"
     "path"
+    "strings"
 	"unique"
 )
 
@@ -30,37 +31,48 @@ func parseArgs() {
 
     flag.Parse()
 
-    showVersion()
     if *vers == true {
         os.Exit(0)
     }
 
-    if *ulid == true {
-        fmt.Println(unique.CreateULID())
-    }
+    nm := os.Args[0]
 
-    if *uuid == true {
-        fmt.Println(unique.CreateUUID())
-    }
+    if len(os.Args) == 1 {
+        if *ulid == true || strings.HasSuffix(nm, "ulid") {
+            fmt.Println(unique.CreateULID())
+            return
+        }
 
-    if *guid == true {
-        fmt.Println(unique.CreateGUID())
-    }
+        if *uuid == true || strings.HasSuffix(nm, "uuid") {
+            fmt.Println(unique.CreateUUID())
+            return
+        }
 
-    if *tsid == true {
-        fmt.Println(unique.CreateTSID())
-    }
+        if *guid == true || strings.HasSuffix(nm, "guid") {
+            fmt.Println(unique.CreateGUID())
+            return
+        }
 
-    if *txid == true {
-        fmt.Println(unique.CreateTXID())
+        if *tsid == true || strings.HasSuffix(nm, "tsid") {
+            fmt.Println(unique.CreateTSID())
+            return
+        }
+
+        if *txid == true || strings.HasSuffix(nm, "txid") {
+            fmt.Println(unique.CreateTXID())
+            return
+        }
     }
 
     if *bytes == true {
         if buf, err := unique.RandomBytes(24); err == nil {
             str := fmt.Sprintf("%x", buf)
             fmt.Printf("%s (%d)\n", str, len(str))
+            return
         }
     }
+
+    showVersion()
 }
 
 func main() {
