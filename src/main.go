@@ -23,7 +23,7 @@ func showVersion() {
 func parseArgs() {
     vers := flag.Bool("version", false, "show the version and exit")
     ulid := flag.Bool("ulid", false, "generate a ulid")
-    uuid := flag.Bool("uuid", true, "generate a uuid")
+    uuid := flag.Bool("uuid", false, "generate a uuid")
     guid := flag.Bool("guid", false, "generate a guid")
     tsid := flag.Bool("tsid", false, "generate a tsid")
     txid := flag.Bool("txid", false, "generate a txid")
@@ -31,8 +31,12 @@ func parseArgs() {
 
     flag.Parse()
 
-    if *vers == true {
-        os.Exit(0)
+
+    if *bytes == true {
+        if buf, err := unique.RandomBytes(24); err == nil {
+            fmt.Printf("%x\n", buf)
+            return
+        }
     }
 
     nm := os.Args[0]
@@ -62,16 +66,9 @@ func parseArgs() {
         return
     }
 
-    if *bytes == true {
-        if buf, err := unique.RandomBytes(24); err == nil {
-            str := fmt.Sprintf("%x", buf)
-            fmt.Printf("%s (%d)\n", str, len(str))
-            return
-        }
-    }
-
-    if *vers == true {
+    if *vers == true || len(os.Args) == 1 {
         showVersion()
+        return
     }
 }
 

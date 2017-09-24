@@ -6,18 +6,15 @@ build:
 	@[ -d bin ] || mkdir bin
 	( /bin/rm -f bin/* )
 	( go build -o bin/unique src/main.go )
-	( ln bin/unique bin/ulid )
-	( ln bin/unique bin/guid )
-	( ln bin/unique bin/tsid )
-	( ln bin/unique bin/txid )
 
 install:
 	@make build
 	cp -f bin/unique $(TARGET)/unique
-	cp -f bin/unique $(TARGET)/ulid
-	cp -f bin/unique $(TARGET)/guid
-	cp -f bin/unique $(TARGET)/tsid
-	cp -f bin/unique $(TARGET)/txid
+	ln -f $(TARGET)/unique $(TARGET)/ulid
+	ln -f $(TARGET)/unique $(TARGET)/uuid
+	ln -f $(TARGET)/unique $(TARGET)/guid
+	ln -f $(TARGET)/unique $(TARGET)/tsid
+	ln -f $(TARGET)/unique $(TARGET)/txid
 
 install-deps:
 	go get -u github.com/golang/lint/golint
