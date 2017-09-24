@@ -62,9 +62,11 @@ func main() {
 
 `unique --version` // shows version
 
-`unique [ --ulid --uuid --guid --tsid --txid --byptes ]`
+`unique [ --ulid --uuid --guid --tsid --txid --bytes ]`
 
 Generates the specified id or byte stream.
+
+_The make file includes a `make install` target that installs unique in /usr/local/bin/ and links ulid, uuid, guid, tsid, txid to enable invoking them without flags..._
 
 ### ULID
 
@@ -111,4 +113,4 @@ Apache 2.0
 * implement mongodb ObjectId from mongo spec
 * implement a DOI struct with id, dateCreated, lastUpdated, and version
 
-###### darryl.west@raincitysoftware.com | Version 1.0.5
+###### darryl.west@raincitysoftware.com | Version 1.0.6

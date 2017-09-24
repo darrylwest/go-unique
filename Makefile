@@ -16,6 +16,9 @@ install:
 	ln -f $(TARGET)/unique $(TARGET)/tsid
 	ln -f $(TARGET)/unique $(TARGET)/txid
 
+build-linux:
+	CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o linux/unique src/main.go
+
 install-deps:
 	go get -u github.com/golang/lint/golint
 	go get github.com/oklog/ulid
