@@ -7,7 +7,6 @@ build:
 	( /bin/rm -f bin/* )
 	( go build -o bin/unique src/main.go )
 	( ln bin/unique bin/ulid )
-	( ln bin/unique bin/uuid )
 	( ln bin/unique bin/guid )
 	( ln bin/unique bin/tsid )
 	( ln bin/unique bin/txid )
@@ -16,7 +15,6 @@ install:
 	@make build
 	cp -f bin/unique $(TARGET)/unique
 	cp -f bin/unique $(TARGET)/ulid
-	cp -f bin/unique $(TARGET)/uuid
 	cp -f bin/unique $(TARGET)/guid
 	cp -f bin/unique $(TARGET)/tsid
 	cp -f bin/unique $(TARGET)/txid

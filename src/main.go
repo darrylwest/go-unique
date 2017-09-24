@@ -23,7 +23,7 @@ func showVersion() {
 func parseArgs() {
     vers := flag.Bool("version", false, "show the version and exit")
     ulid := flag.Bool("ulid", false, "generate a ulid")
-    uuid := flag.Bool("uuid", false, "generate a uuid")
+    uuid := flag.Bool("uuid", true, "generate a uuid")
     guid := flag.Bool("guid", false, "generate a guid")
     tsid := flag.Bool("tsid", false, "generate a tsid")
     txid := flag.Bool("txid", false, "generate a txid")
@@ -37,31 +37,29 @@ func parseArgs() {
 
     nm := os.Args[0]
 
-    if len(os.Args) == 1 {
-        if *ulid == true || strings.HasSuffix(nm, "ulid") {
-            fmt.Println(unique.CreateULID())
-            return
-        }
+    if *ulid == true || strings.HasSuffix(nm, "ulid") {
+        fmt.Println(unique.CreateULID())
+        return
+    }
 
-        if *uuid == true || strings.HasSuffix(nm, "uuid") {
-            fmt.Println(unique.CreateUUID())
-            return
-        }
+    if *uuid == true || strings.HasSuffix(nm, "uuid") {
+        fmt.Println(unique.CreateUUID())
+        return
+    }
 
-        if *guid == true || strings.HasSuffix(nm, "guid") {
-            fmt.Println(unique.CreateGUID())
-            return
-        }
+    if *guid == true || strings.HasSuffix(nm, "guid") {
+        fmt.Println(unique.CreateGUID())
+        return
+    }
 
-        if *tsid == true || strings.HasSuffix(nm, "tsid") {
-            fmt.Println(unique.CreateTSID())
-            return
-        }
+    if *tsid == true || strings.HasSuffix(nm, "tsid") {
+        fmt.Println(unique.CreateTSID())
+        return
+    }
 
-        if *txid == true || strings.HasSuffix(nm, "txid") {
-            fmt.Println(unique.CreateTXID())
-            return
-        }
+    if *txid == true || strings.HasSuffix(nm, "txid") {
+        fmt.Println(unique.CreateTXID())
+        return
     }
 
     if *bytes == true {
@@ -72,7 +70,9 @@ func parseArgs() {
         }
     }
 
-    showVersion()
+    if *vers == true {
+        showVersion()
+    }
 }
 
 func main() {
