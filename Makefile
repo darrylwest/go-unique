@@ -40,6 +40,9 @@ qtest:
 run:
 	go run src/main.go
 
+run-tcp:
+	go run src/unique-tcp.go
+
 watch:
 	./watcher.js
 

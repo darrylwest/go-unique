@@ -1,5 +1,5 @@
 //
-// main -
+// main - then standard cli
 //
 // @author darryl.west <darryl.west@raincitysoftware.com>
 // @created 2017-05-07 12:08:51

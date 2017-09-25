@@ -110,6 +110,7 @@ Apache 2.0
 
 ## To Do
 
+* added tcp and http interfaces with docker containers
 * implement mongodb ObjectId from mongo spec
 * implement a DOI struct with id, dateCreated, lastUpdated, and version
 
