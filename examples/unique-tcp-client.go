@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net"
 	"os"
+    "strings"
 	"time"
 )
 
@@ -18,18 +19,20 @@ func main() {
 		os.Exit(1)
 	}
 
+    cmds := strings.Split("uuid ulid guid tsid txid bytes", " ")
 	defer conn.Close()
 	count := 0
 
     buf := make([]byte, 512)
 
 	for {
+        cmd := cmds[(count % len(cmds))]
 		count++
         if count % 10 == 0 {
             time.Sleep(5 * time.Second)
         }
 
-		text := "ulid\n\r"
+		text := fmt.Sprintf("%s\n\r", cmd)
 		_, err := fmt.Fprintf(conn, text)
 		if err != nil {
 			fmt.Println("lost connection...")
