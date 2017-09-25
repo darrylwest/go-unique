@@ -77,7 +77,7 @@ func (cli Client) handleClient(conn net.Conn) {
             id := unique.CreateULID()
             fmt.Printf("client: %s request: %s, response: %s\n", cli.id, buf, id)
 
-            fmt.Fprintf(conn, id)
+            fmt.Fprintf(conn, "%s\n\r", id)
         }
     }
 }
