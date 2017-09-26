@@ -3,5 +3,6 @@ bin/*
 *db/*
 *.out
 *.swp
+*.class
 
 spotcached

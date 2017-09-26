@@ -45,12 +45,13 @@ run:
 run-tcp:
 	go run src/unique-tcp.go
 
+examples:
+	javac examples/UniqueClient.java
+
 watch:
 	./watcher.js
 
 edit:
 	vi -O3 src/*/*.go test/*.go src/*.go
 
-.PHONY: format
-.PHONY: test
-.PHONY: watch
+.PHONY: format test watch examples

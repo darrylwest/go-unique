@@ -19,7 +19,7 @@ func main() {
 		os.Exit(1)
 	}
 
-    cmds := strings.Split("uuid ulid guid tsid txid bytes noop ping bad", " ")
+    cmds := strings.Split("uuid ulid guid tsid txid bytes ping", " ")
 	defer conn.Close()
 	count := 0
 
@@ -29,7 +29,7 @@ func main() {
         cmd := cmds[(count % len(cmds))]
 		count++
         if count % 10 == 0 {
-            time.Sleep(5 * time.Second)
+            time.Sleep(3 * time.Second)
         }
 
 		text := fmt.Sprintf("%s\n\r", cmd)
