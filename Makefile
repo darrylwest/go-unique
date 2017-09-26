@@ -6,6 +6,7 @@ build:
 	@[ -d bin ] || mkdir bin
 	( /bin/rm -f bin/* )
 	( go build -o bin/unique src/main.go )
+	( go build -o bin/unique-tcp src/unique-tcp.go )
 
 install:
 	@make build
@@ -18,6 +19,7 @@ install:
 
 build-linux:
 	CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o linux/unique src/main.go
+	CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o linux/unique-tcp src/unique-tcp.go
 
 install-deps:
 	go get -u github.com/golang/lint/golint
