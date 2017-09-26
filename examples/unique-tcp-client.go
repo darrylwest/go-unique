@@ -19,7 +19,7 @@ func main() {
 		os.Exit(1)
 	}
 
-    cmds := strings.Split("uuid ulid guid tsid txid bytes", " ")
+    cmds := strings.Split("uuid ulid guid tsid txid", " ")
 	defer conn.Close()
 	count := 0
 

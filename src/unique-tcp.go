@@ -19,16 +19,27 @@ import (
 	"unique"
 )
 
+// Server - port, timeout, etc
 type Server struct {
     Port int
     IdleTimeout time.Duration
 }
 
+// Client - the id, timeout, request count, etc
 type Client struct {
     id string
     IdleTimeout time.Duration
     Requests int
     buffer [64]byte
+}
+
+type CommandMap map[string]func() string
+var commands = CommandMap{
+    "uuid":unique.CreateUUID,
+    "ulid":unique.CreateULID,
+    "guid":unique.CreateGUID,
+    "tsid":unique.CreateTSID,
+    "txid":unique.CreateTXID,
 }
 
 func (cli *Client) readRequest(conn net.Conn) (string, error) {
@@ -52,6 +63,7 @@ func (cli *Client) readRequest(conn net.Conn) (string, error) {
         if err == nil && ccount > 0 {
             response = strings.TrimSpace(string(buf[:ccount]))
         }
+
         cli.Requests++
 
         complete <- true
@@ -68,17 +80,24 @@ func (cli *Client) readRequest(conn net.Conn) (string, error) {
 func (cli Client) handleClient(conn net.Conn) {
     defer conn.Close()
     for {
-        buf, err := cli.readRequest(conn)
+        request, err := cli.readRequest(conn)
         if err != nil {
             fmt.Printf("connection lost from client: %s; %s\n", cli.id, err)
             break
-        } else {
-            // parse the request
-            id := unique.CreateULID()
-            fmt.Printf("client: %s request: %s, response: %s\n", cli.id, buf, id)
+        } 
 
-            fmt.Fprintf(conn, "%s\n\r", id)
+        var response string
+
+        // parse the request
+        if cmd, ok := commands[ request ]; ok {
+            response = cmd()
+        } else {
+            response = "error"
         }
+
+        fmt.Printf("client: %s request: %s, response: %s\n", cli.id, request, response)
+
+        fmt.Fprintf(conn, "%s\n\r", response)
     }
 }
 
@@ -103,6 +122,7 @@ func main() {
         conn, err := ss.Accept()
         if err != nil {
             fmt.Println("Accept error: ", err.Error())
+            continue
         }
 
         // create a client struct and add to the list

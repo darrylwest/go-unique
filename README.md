@@ -104,13 +104,22 @@ Generates a crypto-strength random byte stream.
 
 Example: `269f58bd8796a774e86c7f61c824d4391bbc356bcb190ef3` // 24 bytes, 48 characters
 
+## Services
+
+### TCP Service
+
+Unique not includes as a separate runnable, a TCP service that responds to unique requests for uuid, ulid, guid, tsid, txid and bytes.  The service runs stand-alone or inside a container.   This is convenient when you want to centralize ID generation or use go-unique in an alternate client language.  
+
+_The examples folder has clients in go, node, java and python._
+
 ## License
 
 Apache 2.0
 
 ## To Do
 
-* added tcp and http interfaces with docker containers
+* added http interface 
+* create docker containers for tcp and http services
 * implement mongodb ObjectId from mongo spec
 * implement a DOI struct with id, dateCreated, lastUpdated, and version
 
