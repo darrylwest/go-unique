@@ -112,6 +112,20 @@ Unique not includes as a separate runnable, a TCP service that responds to uniqu
 
 _The examples folder has clients in go, node, java and python._
 
+Requests should be terminated with `\n\r` or `\n`.  Responses are terminated with `\n`.  The full list of requests are:
+
+* uuid
+* ulid
+* guid
+* tsid
+* txid
+* bytes
+* noop (returns ok)
+* ping (returns pong)
+* version (returns the current version)
+
+If the requested command is not one of the above, then `error` is returned.
+
 ## License
 
 Apache 2.0
@@ -123,4 +137,4 @@ Apache 2.0
 * implement mongodb ObjectId from mongo spec
 * implement a DOI struct with id, dateCreated, lastUpdated, and version
 
-###### darryl.west@raincitysoftware.com | Version 1.0.6
+###### darryl.west@raincitysoftware.com | Version 1.0.7
