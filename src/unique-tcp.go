@@ -1,5 +1,5 @@
 //
-// main - start the tcp server
+// main - a TCP server to listen for unique commands and respond with the calculated value.
 //
 // @author darryl.west <darryl.west@raincitysoftware.com>
 // @created 2017-09-25 08:27:43
@@ -33,13 +33,22 @@ type Client struct {
     buffer [64]byte
 }
 
+// the default bytes calculation
+func bytes() string {
+    b, _ := unique.RandomBytes(24)
+    return fmt.Sprintf("%x", b)
+}
+
 type CommandMap map[string]func() string
 var commands = CommandMap{
+    "ping":func() string { return "pong" },
+    "noop":func() string { return "ok" },
     "uuid":unique.CreateUUID,
     "ulid":unique.CreateULID,
     "guid":unique.CreateGUID,
     "tsid":unique.CreateTSID,
     "txid":unique.CreateTXID,
+    "bytes":bytes,
 }
 
 func (cli *Client) readRequest(conn net.Conn) (string, error) {
