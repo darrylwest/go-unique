@@ -91,7 +91,7 @@ func (cli *Client) readRequest(conn net.Conn) (string, error) {
 
 func (cli Client) handleClient(conn net.Conn) {
     defer func() {
-        fmt.Printf("closing connectin from %v\n", conn.RemoteAddr())
+        fmt.Printf("closing connection from %v\n", conn.RemoteAddr())
         conn.Close()
     }()
 
