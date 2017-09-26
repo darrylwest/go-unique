@@ -53,6 +53,7 @@ var commands = CommandMap{
     "bytes":bytes,
 }
 
+// this could be implemented with a Reader/Writer/Scanner and implement SetDeadline, but this is a bit lighter weight...
 func (cli *Client) readRequest(conn net.Conn) (string, error) {
     fmt.Println("read from client...")
 
@@ -89,7 +90,11 @@ func (cli *Client) readRequest(conn net.Conn) (string, error) {
 }
 
 func (cli Client) handleClient(conn net.Conn) {
-    defer conn.Close()
+    defer func() {
+        fmt.Printf("closing connectin from %v\n", conn.RemoteAddr())
+        conn.Close()
+    }()
+
     for {
         request, err := cli.readRequest(conn)
         if err != nil {
