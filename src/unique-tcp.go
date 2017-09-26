@@ -39,10 +39,12 @@ func bytes() string {
     return fmt.Sprintf("%x", b)
 }
 
+// CommandMap a map of recognized commands that may be send from clinets; if not in the list then 'error' is returned
 type CommandMap map[string]func() string
 var commands = CommandMap{
     "ping":func() string { return "pong" },
     "noop":func() string { return "ok" },
+    "version":unique.Version,
     "uuid":unique.CreateUUID,
     "ulid":unique.CreateULID,
     "guid":unique.CreateGUID,
@@ -140,20 +142,24 @@ func main() {
     }
 }
 
-func showVersion() {
-    fmt.Printf("%s Version: %s\n", path.Base(os.Args[0]), unique.Version())
-}
-
 func parseArgs() *Server {
-    svr := Server{ Port: 3001, IdleTimeout: 5 * time.Minute }
+    tos := 300
+    svr := Server{ Port: 3001, IdleTimeout: time.Duration(tos) * time.Second }
 
     vers := flag.Bool("version", false, "show the version and exit")
+    port := flag.Int("port", svr.Port, "set the listening port")
+    timeout := flag.Int("timeout", tos, "set the client's idle timeout in seconds")
+
     flag.Parse();
 
     // show the version
+    fmt.Printf("%s Version: %s\n", path.Base(os.Args[0]), unique.Version())
     if *vers == true {
         return nil
     }
+
+    svr.Port = *port
+    svr.IdleTimeout = time.Duration(*timeout) * time.Second
 
     // show the port and idle timeout
     return &svr
