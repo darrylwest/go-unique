@@ -55,8 +55,6 @@ var commands = CommandMap{
 
 // this could be implemented with a Reader/Writer/Scanner and implement SetDeadline, but this is a bit lighter weight...
 func (cli *Client) readRequest(conn net.Conn) (string, error) {
-    fmt.Println("read from client...")
-
     ctx, cancel := context.WithTimeout(context.Background(), cli.IdleTimeout)
     defer cancel()
 
@@ -91,14 +89,13 @@ func (cli *Client) readRequest(conn net.Conn) (string, error) {
 
 func (cli Client) handleClient(conn net.Conn) {
     defer func() {
-        fmt.Printf("closing connection from %v\n", conn.RemoteAddr())
+        fmt.Printf("closing connection from %v, id: %s\n", conn.RemoteAddr(), cli.id)
         conn.Close()
     }()
 
     for {
         request, err := cli.readRequest(conn)
         if err != nil {
-            fmt.Printf("connection lost from client: %s; %s\n", cli.id, err)
             break
         } 
 
@@ -111,7 +108,7 @@ func (cli Client) handleClient(conn net.Conn) {
             response = "error"
         }
 
-        fmt.Printf("client: %s request: %s, response: %s\n", cli.id, request, response)
+        // fmt.Printf("client: %s request: %s, response: %s\n", cli.id, request, response)
 
         fmt.Fprintf(conn, "%s\n\r", response)
     }

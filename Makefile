@@ -21,6 +21,10 @@ build-linux:
 	CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o linux/unique src/main.go
 	CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o linux/unique-tcp src/unique-tcp.go
 
+docker:
+	CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o linux/unique-tcp src/unique-tcp.go
+	( cd linux && ./build.sh )
+
 install-deps:
 	go get -u github.com/golang/lint/golint
 	go get github.com/oklog/ulid
