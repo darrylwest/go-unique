@@ -4,6 +4,7 @@
 # 2017.09.27
 
 import socket
+import time
 
 HOST = "localhost"
 PORT = 3001
@@ -20,7 +21,7 @@ class Unique:
     def send(self, cmd):
         self.sock.send(cmd)
         data = self.sock.recv(64)
-        print 'received', repr(data)
+        print cmd, repr(data.rstrip())
 
     def close(self):
         self.sock.close()
@@ -29,11 +30,12 @@ class Unique:
 if __name__ == '__main__':
     u = Unique(HOST, PORT)
     u.open()
-    u.send("uuid")
-    u.send("ulid")
-    u.send("guid")
-    u.send("tsid")
-    u.send("txid")
-    u.send("bytes")
-    u.send("version")
+    while True:
+        cmds = [ "uuid", "ulid", "guid", "tsid", "txid", "bytes", "ping", "version" ]
+        for cmd in cmds:
+            u.send(cmd)
+
+        time.sleep(2)
+
     u.close()
+
