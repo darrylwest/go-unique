@@ -36,7 +36,7 @@ or
 
 `git clone https://github.com/darrylwest/go-unique.git`
 
-## Use
+## Embedded Use
 
 ```go
 import "github.com/darrylwest/go-unique/unique"
@@ -58,7 +58,7 @@ func main() {
 }
 ```
 
-### Command Line
+### Command Line Use
 
 `unique --version` // shows version
 
@@ -126,6 +126,10 @@ Requests should be terminated with `\n\r` or `\n`.  Responses are terminated wit
 
 If the requested command is not one of the above, then `error` is returned.
 
+### Docker Container
+
+The linux folder contains a Dockerfile, build and run scripts.  You can simply invoke `run.sh` to pull the public image or modify the Dockerfile for your needs.  A good use case for this container is to create a specific network, either bridge or overlay, to enable direct accessability from other containers on the same network.
+
 ## License
 
 Apache 2.0
@@ -133,7 +137,7 @@ Apache 2.0
 ## To Do
 
 * added http interface 
-* create docker containers for tcp and http services
+* create docker container http services
 * implement mongodb ObjectId from mongo spec
 * implement a DOI struct with id, dateCreated, lastUpdated, and version
 
