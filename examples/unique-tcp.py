@@ -21,7 +21,7 @@ class Unique:
     def send(self, cmd):
         self.sock.send(cmd)
         data = self.sock.recv(64)
-        print cmd, repr(data.rstrip())
+        print(cmd, repr(data.rstrip()))
 
     def close(self):
         self.sock.close()
@@ -31,7 +31,7 @@ if __name__ == '__main__':
     u = Unique(HOST, PORT)
     u.open()
     while True:
-        cmds = [ "uuid", "ulid", "guid", "tsid", "txid", "bytes", "ping", "version" ]
+        cmds = [ b"uuid", b"ulid", b"guid", b"tsid", b"txid", b"bytes", b"ping", b"version" ]
         for cmd in cmds:
             u.send(cmd)
 
