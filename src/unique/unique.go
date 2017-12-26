@@ -17,6 +17,8 @@ import (
 	"time"
 )
 
+const radix = 36
+
 var (
 	entropy io.Reader = rand.New(rand.NewSource(time.Now().UnixNano()))
 )
@@ -66,14 +68,14 @@ func CreateGUID() string {
 
 // CreateTSID generates a 12 character time-stamp / base 36 id
 func CreateTSID() string {
-	id := strconv.FormatInt(time.Now().UnixNano(), 36)
+	id := strconv.FormatInt(time.Now().UnixNano(), radix)
 
 	return id
 }
 
 // CreateTXID generates a 16 character time-stamp / base 36 id
 func CreateTXID() string {
-	id := strconv.FormatInt(time.Now().UnixNano(), 36)
+	id := strconv.FormatInt(time.Now().UnixNano(), radix)
 	buf, _ := RandomBytes(2)
 	str := fmt.Sprintf("%s%x", id, buf)
 
