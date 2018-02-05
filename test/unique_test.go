@@ -84,7 +84,7 @@ func TestConfig(t *testing.T) {
         g.It("should generate a 9/10 character slug", func() {
             slug := unique.CreateSlug()
             fmt.Println(slug)
-			g.Assert(len(slug) > 8).IsTrue()
+			g.Assert(len(slug) >= 7).IsTrue()
         })
 
         g.It("should generate a xuid", func() {

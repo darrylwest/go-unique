@@ -16,6 +16,8 @@ install:
 	ln -f $(TARGET)/unique $(TARGET)/guid
 	ln -f $(TARGET)/unique $(TARGET)/tsid
 	ln -f $(TARGET)/unique $(TARGET)/txid
+	ln -f $(TARGET)/unique $(TARGET)/cuid
+	ln -f $(TARGET)/unique $(TARGET)/xuid
 
 build-linux:
 	CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o linux/unique src/main.go

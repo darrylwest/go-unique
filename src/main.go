@@ -27,6 +27,8 @@ func parseArgs() {
     guid := flag.Bool("guid", false, "generate a guid")
     tsid := flag.Bool("tsid", false, "generate a tsid")
     txid := flag.Bool("txid", false, "generate a txid")
+    cuid := flag.Bool("cuid", false, "generate a cuid")
+    xuid := flag.Bool("xuid", false, "generate a xuid")
     bytes := flag.Bool("bytes", false, "generate a 48 character byte stream")
 
     flag.Parse()
@@ -63,6 +65,16 @@ func parseArgs() {
 
     if *txid == true || strings.HasSuffix(nm, "txid") {
         fmt.Println(unique.CreateTXID())
+        return
+    }
+
+    if *cuid == true || strings.HasSuffix(nm, "cuid") {
+        fmt.Println(unique.CreateCUID())
+        return
+    }
+
+    if *xuid == true || strings.HasSuffix(nm, "xuid") {
+        fmt.Println(unique.CreateXUID())
         return
     }
 
