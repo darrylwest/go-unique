@@ -20,7 +20,7 @@ import (
 const radix = 36
 
 var (
-    source rand.Source = rand.NewSource(time.Now().UnixNano())
+    source = rand.NewSource(time.Now().UnixNano())
 	entropy io.Reader = rand.New(source)
 )
 
