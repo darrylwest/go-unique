@@ -31,7 +31,7 @@ if __name__ == '__main__':
     u = Unique(HOST, PORT)
     u.open()
     while True:
-        cmds = [ b"uuid", b"ulid", b"guid", b"tsid", b"txid", b"bytes", b"ping", b"version" ]
+        cmds = [ b"uuid", b"ulid", b"guid", b"tsid", b"txid", b"cuid", b"xuid", b"bytes", b"ping", b"version" ]
         for cmd in cmds:
             u.send(cmd)
 

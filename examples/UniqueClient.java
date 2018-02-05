@@ -7,8 +7,7 @@ import java.net.*;
 class UniqueClient {
 
     public List<String> createCommands() {
-        // String[] list = new String[]{ "uuid", "ulid", "guid", "tsid", "txid", "bytes", "ping", "version" };
-        List<String> requests = Arrays.asList( "uuid", "ulid", "guid", "tsid", "txid", "bytes", "ping", "version" );
+        List<String> requests = Arrays.asList( "uuid", "ulid", "guid", "tsid", "txid", "cuid", "xuid", "bytes", "ping", "version" );
 
         return requests;
     }

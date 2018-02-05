@@ -22,11 +22,14 @@ A module that supports a handy collection of unique id generators including:
 * ulid - a 26 character sortable
 * uuid - from standard high-quality uuid
 * guid - a uuid with dashes stripped
+* cuid - a 25 character id generator
+* xuid - a cuid without the 'c'
 
 And some ids suitable for sessions, etc:
 
 * tsid - a 12 character sortable id, good to the nano second
 * txid - a 16 character sortable id, tsid with random bytes
+* slug - a 7-10 character id based on cuid logic
 
 ## Installation
 
@@ -51,6 +54,12 @@ func main() {
     txid := unique.CreateTXID()
     fmt.Printf("txid : %s\n", txid)
     
+    cuid := unique.CreateCUID()
+    fmt.Printf("cuid : %s\n", cuid)
+    
+    xuid := unique.CreateXUID()
+    fmt.Printf("xuid : %s\n", xuid)
+    
     if buf, err := unique.RandomBytes(24); err == nil {
     	str := fmt.Sprintf("%x", buf)
     	fmt.Printf("%s (%d)\n", s, len(str));
@@ -62,11 +71,11 @@ func main() {
 
 `unique --version` // shows version
 
-`unique [ --ulid --uuid --guid --tsid --txid --bytes ]`
+`unique [ --ulid --uuid --guid --tsid --txid --cuid --xuid --bytes ]`
 
 Generates the specified id or byte stream.
 
-_The make file includes a `make install` target that installs unique in /usr/local/bin/ and links ulid, uuid, guid, tsid, txid to enable invoking them without flags..._
+_The make file includes a `make install` target that installs unique in /usr/local/bin/ and links ulid, uuid, guid, tsid, txid, cuid, xuid to enable invoking them without flags..._
 
 ### ULID
 
@@ -111,6 +120,10 @@ Example: `ch72gsb320000udocl363eofy `
 Example: `ew0k9fwpl`
 
 ### XUID - CUID with a random start character
+
+It's a cuid without the 'c'.  The 'c' is replaced with a random character a-z.
+
+Example: `djdahrsg00000sn273os1u7d7`
 
 ### RandomBytes
 

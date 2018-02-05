@@ -50,6 +50,8 @@ var commands = CommandMap{
     "guid":unique.CreateGUID,
     "tsid":unique.CreateTSID,
     "txid":unique.CreateTXID,
+    "cuid":unique.CreateCUID,
+    "xuid":unique.CreateXUID,
     "bytes":bytes,
 }
 
