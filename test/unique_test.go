@@ -75,8 +75,22 @@ func TestConfig(t *testing.T) {
 			g.Assert(len(buf)).Equal(size)
 		})
 
-        g.It("should generate a cuid")
-        g.It("should generate a slug")
-        g.It("should generate a xuid")
+        g.It("should generate a 25 character cuid", func() {
+            cuid := unique.CreateCUID()
+            fmt.Println(cuid)
+			g.Assert(len(cuid)).Equal(25)
+        })
+
+        g.It("should generate a 9/10 character slug", func() {
+            slug := unique.CreateSlug()
+            fmt.Println(slug)
+			g.Assert(len(slug) > 8).IsTrue()
+        })
+
+        g.It("should generate a xuid", func() {
+            xuid := unique.CreateXUID()
+            fmt.Println(xuid)
+			g.Assert(len(xuid)).Equal(25)
+        })
 	})
 }

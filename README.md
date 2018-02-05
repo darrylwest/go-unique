@@ -98,6 +98,20 @@ Base 36 unix nano with 2 additional random bytes, 4 characters.  Sortable, short
 
 Example: `bcoexh3rdic67523`
 
+### CUID - From the browser world
+
+See the [main project site](http://usecuid.org/) for full details. 
+
+_Special thanks to [Luc Heinrich](https://github.com/lucsky/cuid) for his go implementation..._
+
+Example: `ch72gsb320000udocl363eofy `
+
+### Slug - From CUID
+
+Example: `ew0k9fwpl`
+
+### XUID - CUID with a random start character
+
 ### RandomBytes
 
 Generates a crypto-strength random byte stream.
@@ -119,6 +133,8 @@ Requests should be terminated with `\n\r` or `\n`.  Responses are terminated wit
 * guid
 * tsid
 * txid
+* cuid
+* xuid
 * bytes
 * noop (returns ok)
 * ping (returns pong)
@@ -130,9 +146,9 @@ If the requested command is not one of the above, then `error` is returned.
 
 The linux folder contains a Dockerfile, build and run scripts.  You can simply invoke `run.sh` to pull the public image or modify the Dockerfile for your needs.  A good use case for this container is to create a specific network, either bridge or overlay, to enable direct accessability from other containers on the same network.
 
-## License
+## Licenses
 
-Apache 2.0
+Apache 2.0, MIT
 
 ## To Do
 
@@ -141,4 +157,4 @@ Apache 2.0
 * implement mongodb ObjectId from mongo spec
 * implement a DOI struct with id, dateCreated, lastUpdated, and version
 
-###### darryl.west@raincitysoftware.com | Version 1.0.7
+###### darryl.west@raincitysoftware.com | Version 1.1.2

@@ -20,7 +20,8 @@ import (
 const radix = 36
 
 var (
-	entropy io.Reader = rand.New(rand.NewSource(time.Now().UnixNano()))
+    source rand.Source = rand.NewSource(time.Now().UnixNano())
+	entropy io.Reader = rand.New(source)
 )
 
 func genulid(entropy io.Reader, ts uint64) (ulid.ULID, error) {
@@ -80,4 +81,26 @@ func CreateTXID() string {
 	str := fmt.Sprintf("%s%x", id, buf)
 
 	return str
+}
+
+// CreateCUID generates a 25 character cuid
+func CreateCUID() string {
+    return cuid("c")
+}
+
+// CreateSlug generates a 9 or 10 character semi-unique
+func CreateSlug() string {
+    return slug()
+}
+
+// CreateXUID generates a 25 character cuid that starts with a random lowercase character
+func CreateXUID() string {
+    return cuid(randomChar())
+}
+
+func randomChar() string {
+    r := rand.New(source)
+    chars := "abcdefghijklmnopqrstuvwxyz"
+    n  := r.Int31n(25)
+    return chars[n:n+1]
 }
