@@ -74,5 +74,9 @@ func TestConfig(t *testing.T) {
 			g.Assert(err).Equal(nil)
 			g.Assert(len(buf)).Equal(size)
 		})
+
+        g.It("should generate a cuid")
+        g.It("should generate a slug")
+        g.It("should generate a xuid")
 	})
 }
