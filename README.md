@@ -170,4 +170,4 @@ Apache 2.0, MIT
 * implement mongodb ObjectId from mongo spec
 * implement a DOI struct with id, dateCreated, lastUpdated, and version
 
-###### darryl.west@raincitysoftware.com | Version 1.1.2
+###### darryl.west@raincitysoftware.com | Version 2018.12.9
