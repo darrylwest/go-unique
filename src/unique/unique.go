@@ -20,7 +20,7 @@ import (
 const radix = 36
 
 var (
-    source = rand.NewSource(time.Now().UnixNano())
+	source            = rand.NewSource(time.Now().UnixNano())
 	entropy io.Reader = rand.New(source)
 )
 
@@ -85,22 +85,22 @@ func CreateTXID() string {
 
 // CreateCUID generates a 25 character cuid
 func CreateCUID() string {
-    return cuid("c")
+	return cuid("c")
 }
 
 // CreateSlug generates a 9 or 10 character semi-unique
 func CreateSlug() string {
-    return slug()
+	return slug()
 }
 
 // CreateXUID generates a 25 character cuid that starts with a random lowercase character
 func CreateXUID() string {
-    return cuid(randomChar())
+	return cuid(randomChar())
 }
 
 func randomChar() string {
-    r := rand.New(source)
-    chars := "abcdefghijklmnopqrstuvwxyz"
-    n  := r.Int31n(25)
-    return chars[n:n+1]
+	r := rand.New(source)
+	chars := "abcdefghijklmnopqrstuvwxyz"
+	n := r.Int31n(25)
+	return chars[n : n+1]
 }
