@@ -13,5 +13,5 @@ branches:
     - staging
 
 script:
-  - make test
+  - make qtest
 

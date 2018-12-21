@@ -50,10 +50,14 @@ format:
 lint:
 	@( golint src/... && golint test/... )
 
-## test: run all unit tests
+## test: run all unit tests + vet + lint
 test:
 	@( go vet src/unique/*.go && go vet src/unique/*.go && go vet src/*.go && cd test/ && go test -cover )
 	@( make lint )
+
+## qtest: run all unit tests + vet
+qtest:
+	@( go vet src/unique/*.go && go vet src/unique/*.go && go vet src/*.go && cd test/ && go test -cover )
 
 ## run: run the service
 run:
