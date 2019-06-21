@@ -13,7 +13,7 @@ import (
 	"os"
 	"path"
 	"strings"
-	"unique"
+	"github.com/FrankieFinancial/go-unique/unique"
 )
 
 func showVersion() {

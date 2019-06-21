@@ -16,7 +16,7 @@ import (
 	"path"
 	"strings"
 	"time"
-	"unique"
+	"github.com/FrankieFinancial/go-unique/unique"
 )
 
 // Server - port, timeout, etc
