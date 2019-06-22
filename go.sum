@@ -1,0 +1,8 @@
+github.com/franela/goblin v0.0.0-20181003173013-ead4ad1d2727 h1:eouy4stZdUKn7n98c1+rdUTxWMg+jvhP+oHt0K8fiug=
+github.com/franela/goblin v0.0.0-20181003173013-ead4ad1d2727/go.mod h1:7dvUGVsVBjqR7JHJk0brhHOZYGmfBYOrK0ZhYMEtBr4=
+github.com/oklog/ulid/v2 v2.0.2 h1:r4fFzBm+bv0wNKNh5eXTwU7i85y5x+uwkxCUTNVQqLc=
+github.com/oklog/ulid/v2 v2.0.2/go.mod h1:mtBL0Qe/0HAx6/a4Z30qxVIAL1eQDweXq5lxOEiwQ68=
+github.com/oklog/ulid/v2 v2.0.3-0.20190603120239-e51a56f2a4c1 h1:iDkIZZX0HmpKPV/vIEianpYrDJ1CeI7PnSFGCtJ59GQ=
+github.com/oklog/ulid/v2 v2.0.3-0.20190603120239-e51a56f2a4c1/go.mod h1:mtBL0Qe/0HAx6/a4Z30qxVIAL1eQDweXq5lxOEiwQ68=
+github.com/pborman/getopt v0.0.0-20170112200414-7148bc3a4c30/go.mod h1:85jBQOZwpVEaDAr341tbn15RS4fCAsIst0qp7i8ex1o=
+github.com/pborman/getopt v0.0.0-20190409184431-ee0cd42419d3/go.mod h1:85jBQOZwpVEaDAr341tbn15RS4fCAsIst0qp7i8ex1o=
