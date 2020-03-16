@@ -22,6 +22,7 @@ func showVersion() {
 
 func parseArgs() {
 	vers := flag.Bool("version", false, "show the version and exit")
+	size := flag.Int("size", 24, "the number of random bytes to user (only for bytes)")
 	ulid := flag.Bool("ulid", false, "generate a ulid")
 	uuid := flag.Bool("uuid", false, "generate a uuid")
 	guid := flag.Bool("guid", false, "generate a guid")
@@ -34,7 +35,7 @@ func parseArgs() {
 	flag.Parse()
 
 	if *bytes == true {
-		if buf, err := unique.RandomBytes(24); err == nil {
+		if buf, err := unique.RandomBytes(*size); err == nil {
 			fmt.Printf("%x\n", buf)
 			return
 		}

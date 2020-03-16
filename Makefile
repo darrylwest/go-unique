@@ -16,7 +16,6 @@ build:
 
 ## install: install all the cli versions locally, ulid, uuid, txid, xuid, etc
 install:
-	@make build
 	cp -f bin/unique $(TARGET)/unique
 	ln -f $(TARGET)/unique $(TARGET)/ulid
 	ln -f $(TARGET)/unique $(TARGET)/uuid
@@ -25,6 +24,11 @@ install:
 	ln -f $(TARGET)/unique $(TARGET)/txid
 	ln -f $(TARGET)/unique $(TARGET)/cuid
 	ln -f $(TARGET)/unique $(TARGET)/xuid
+
+## build-install: install all the cli versions locally, ulid, uuid, txid, xuid, etc
+build-install:
+	@make build
+	@make install
 
 ## build-linux: build the targets for linux
 build-linux:

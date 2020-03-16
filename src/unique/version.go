@@ -10,9 +10,9 @@ package unique
 import "fmt"
 
 const (
-	major = 18
-	minor = 12
-	patch = 21
+	major = 20
+	minor = 03
+	patch = 15
 )
 
 // Version - return the version number as a single string
