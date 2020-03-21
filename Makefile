@@ -24,6 +24,7 @@ install:
 	ln -f $(TARGET)/unique $(TARGET)/txid
 	ln -f $(TARGET)/unique $(TARGET)/cuid
 	ln -f $(TARGET)/unique $(TARGET)/xuid
+	ln -f $(TARGET)/unique $(TARGET)/bytes
 
 ## build-install: install all the cli versions locally, ulid, uuid, txid, xuid, etc
 build-install:
