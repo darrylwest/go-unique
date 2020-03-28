@@ -34,14 +34,14 @@ func parseArgs() {
 
 	flag.Parse()
 
-	if *bytes == true {
+	nm := os.Args[0]
+
+	if *bytes == true || strings.HasSuffix(nm, "bytes") {
 		if buf, err := unique.RandomBytes(*size); err == nil {
 			fmt.Printf("%x\n", buf)
 			return
 		}
 	}
-
-	nm := os.Args[0]
 
 	if *ulid == true || strings.HasSuffix(nm, "ulid") {
 		fmt.Println(unique.CreateULID())
