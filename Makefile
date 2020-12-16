@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-export GOPATH:=$(HOME)/.gopath:$(PWD)
+# export GOPATH="$(HOME)/go:$(PWD)"
 TARGET=/usr/local/bin
 
 ## help: this help file
@@ -43,7 +43,7 @@ docker:
 
 ## install-deps: install all required dependencies
 install-deps:
-	go get -u github.com/golang/lint/golint
+	go get -u golang.org/x/lint/golint
 	go get github.com/oklog/ulid
 	go get github.com/franela/goblin
 
