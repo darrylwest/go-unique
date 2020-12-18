@@ -25,8 +25,13 @@ var (
 )
 
 func init() {
-	setRandomSource(rand.NewSource(time.Now().Unix()))
-	setCounter(&DefaultCounter{})
+	setRandomSource(rand.NewSource(time.Now().UnixNano()))
+
+  n := rand.Intn(int(discreteValues))
+  ctr := &DefaultCounter{
+    count: int32(n),
+  }
+	setCounter(ctr)
 
 	hostname, err := os.Hostname()
 	if err != nil {

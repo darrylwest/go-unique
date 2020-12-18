@@ -78,7 +78,8 @@ examples:
 
 ## watch: start the source code watcher
 watch:
-	./watcher.js
+	clear
+	while true; do inotifywait -r -e modify --exclude=".swp" src; clear; make test; done
 
 ## edit: edit the source code
 edit:
